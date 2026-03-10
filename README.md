@@ -52,9 +52,10 @@ The test dataset contains records for **418 passengers**. These records contain 
 
 # Prediction Task
 
-The prediction task is formulated as a **binary classification problem**. For every passenger in the test dataset, the model must output one of two possible values:
-0 = passenger did not survive
+The prediction task is formulated as a binary classification problem. For every passenger in the test dataset, the model must output one of two possible values: 
+0 = passenger did not survive 
 1 = passenger survived
+
 ---
 
 
