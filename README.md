@@ -25,11 +25,41 @@ The objective of this challenge is to build a predictive model capable of answer
 
 Using passenger data such as age, gender, ticket class, and travel information, the model attempts to identify patterns associated with survival outcomes. These patterns are then applied to new passenger records to estimate survival probability.
 
----
+## Problem Type
 
+This is a **binary classification** problem.
+
+- `0` = Did Not Survive
+- `1` = Survived
+
+Because the target variable is categorical, a classification algorithm was used instead of regression.
+
+## Dataset Files
+
+This project used three Kaggle competition files:
+
+- `train.csv` – labeled dataset used for training and validation
+- `test.csv` – unlabeled dataset used for final predictions
+- `gender_submission.csv` – example submission format provided by Kaggle
+  
 # Dataset
 
 The dataset used in this project is obtained from the Kaggle Titanic Machine Learning competition. The competition provides two primary datasets.
+
+## Workflow
+
+The notebook was expanded into a more complete machine learning pipeline:
+
+1. Load and inspect the Titanic dataset  
+2. Clean missing values  
+3. Encode categorical variables  
+4. Perform feature engineering  
+5. Define features and target  
+6. Split training and validation data  
+7. Train a baseline Random Forest model  
+8. Evaluate model performance  
+9. Compare improved models  
+10. Generate final predictions and Kaggle submissions  
 
 ### Training Dataset
 
@@ -44,64 +74,90 @@ Example features include:
 - Ticket fare
 - Port of embarkation
 
-### Test Dataset
+## Data Preprocessing
 
-The test dataset contains records for **418 passengers**. These records contain the same passenger attributes but do not include the survival outcome. The trained model must predict whether each passenger survived.
+The preprocessing stage included:
 
----
+- Handling missing values in `Age` and `Embarked`
+- Dropping `Cabin` due to excessive missing data
+- Encoding `Sex` and `Embarked` into numeric values
+- Preparing the dataset for model training
 
-# Prediction Task
+## Feature Engineering
 
-The prediction task is formulated as a binary classification problem. For every passenger in the test dataset, the model must output one of two possible values: 
-0 = passenger did not survive 
-1 = passenger survived
+Additional preparation steps were added to improve model readiness, including:
 
----
+- creating structured model inputs
+- improving consistency in the dataset
+- selecting the most relevant predictors for survival classification
 
+## Model Used
 
-Each row represents the model's predicted survival outcome for a passenger in the test dataset.
+The main model used in this project was a **Random Forest Classifier**.
 
----
+Random Forest was selected because:
 
-# Model Evaluation
+- the problem is a binary classification task
+- the dataset is structured tabular data
+- the model handles mixed feature types well
+- ensemble learning helps reduce overfitting compared to a single decision tree
 
-Predictions are evaluated using **classification accuracy**, which measures how often the model correctly predicts survival outcomes.
+## Evaluation Metrics
 
-Accuracy represents the proportion of correct predictions made by the model compared to the total number of predictions.
+The improved model evaluation stage included:
 
-Higher accuracy indicates that the model successfully captured meaningful patterns in the passenger data.
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- Confusion Matrix
+- Classification Report
 
----
+### Validation Results
 
-# Minimum Performance Requirement
+- **Accuracy:** 81.56%
+- **Precision:** 78.13%
+- **Recall:** 72.46%
+- **F1 Score:** 75.19%
 
-To demonstrate that the machine learning model performs effectively, the project requires achieving an accuracy score **greater than 70%**.
+These metrics provided a more complete view of model performance than accuracy alone.
 
-Models trained on the Titanic dataset commonly reach accuracy levels between: 70%-85%
+## Kaggle Competition Results
 
+Two competition submissions were generated.
 
-## Current Progress
+- **First submission:** 0.75358
+- **Best submission:** 0.76555
 
-✔ Data exploration and visualization
-✔ Data preprocessing and feature preparation
+The improved notebook workflow strengthened evaluation and retraining, while the Kaggle score continued to depend only on the final submission format and predicted survival values.
 
-## Future Work
-✔ Model training using Random Forest
-✔ Prediction generation for test passengers
-✔ Submission file creation
-✔ Presentaion Slides
-✔ Final Report
+## Key Findings
 
-## Citations and Acknowledgements
+- Survival was strongly influenced by demographic and class-related patterns
+- The Random Forest model performed well as a baseline classifier
+- Adding validation and evaluation improved the modeling workflow
+- The model performed better at identifying non-survivors than survivors
+- Internal validation metrics gave a clearer understanding of model strengths and weaknesses
 
-Titanic Dataset – Kaggle Machine Learning Competition  
-https://www.kaggle.com/competitions/titanic
+## Technologies Used
 
-Scikit-Learn Machine Learning Library  
-https://scikit-learn.org
+- Python
+- Pandas
+- NumPy
+- Matplotlib / Seaborn
+- Scikit-learn
+- Kaggle Notebook Environment
 
-Pandas Data Analysis Library  
-https://pandas.pydata.org
+## Files in This Repository
 
+- `Titanic 041326.ipynb` – main project notebook
+- `README.md` – project overview and results
+- `submission.csv` – final Kaggle submission file (if included)
 
+## Conclusion
 
+This project demonstrates how machine learning can be used to solve a real-world classification problem using historical passenger data. By improving preprocessing, evaluation, and retraining steps, the workflow became more systematic and the model became easier to assess and refine.
+
+## Author
+
+Ayana Edwards
